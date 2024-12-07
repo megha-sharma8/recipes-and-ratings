@@ -54,14 +54,31 @@ For healthy recipes, sugar tends to be a less popular ingredient, with only appr
 
 
 
-We also were curious about the nutritional content 
+We were also curious about the change in nutritional content depending on the preparation time.
 
+'| min_bins   |   calories |\n|:-----------|-----------:|\n| (0-30]     |    347.861 |\n| (30, 60]   |    445.806 |\n| (60, 120]  |    558.003 |\n| (120, 180] |    565.975 |\n| (180, 360] |    573.442 |'
+
+If the preparation time of the ingredients is low, so is the amount of calories, which could be due to the fact that these foods are not being cooked or fried as much. Recipes that take between 180 and 360 minutes (3 to 6 hours) to prepare tend to have the most amount of calories, which could be because they require more ingredients compared to recipes with shorter and longer preparation times. However, when recipes take longer than 360 minutes to prepare, the average calorie content drops again (see below). 
+
+'| min_bins   |   n_ingredients |\n|:-----------|----------------:|\n| (0-30]     |         7.80665 |\n| (30, 60]   |        10.0906  |\n| (60, 120]  |        10.9732  |\n| (120, 180] |        10.6002  |\n| (180, 360] |        10.2368  |'
+
+Referencing the *Nutritional Content by Cooking Time Bin for Healthy Recipes* graph, we can see that the PDV percentage is decreasing for all nutrients (except for sugar). This may also indicate why slow-cooked dishes are less calorie-dense.
+
+
+
+Altogether, we can see that there is a correlation between ingredients 
 <iframe
     src="assets/nutritional-content-cooking-time.html"
     width="800"
     height="600"
     frameborder="0"
 ></iframe>
+
+Here, we can see that healthy recipes that take less preparation time & have less variance between the percentage of total fat, sodium, protein, saturated fat, and carbohydrates. Total fat, sodium and carbohydrates having almost no variance when preparation time is equivalent to ~90 minutes, however, as preparation time increases, so does the variance between the nutrients' percentage of daily values.
+
+### Interesting Aggregates
+
+
 
 ## Framing a Prediction Problem
 
