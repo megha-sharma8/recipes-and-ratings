@@ -24,11 +24,11 @@ Our next step was creating new columns out of the given 'nutrition' column into 
 
 Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe, and created a new column called 'healthy' which was set to one if the recipes fit the criteria as defined, otherwise the 'healthy' column was set to 0.
 
-After cleaning our data, we merged the dataset 
+After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low, once again being insignificant to clean. This DataFrame yields 6177 healthy recipes.
 
-## Analysis
+## Models
 
-Out of mere curiosity, we first decided to look at 
+Out of mere curiosity, we first decided to look at the most popular ingredients in healthy recipes. Salt appeared to be 
 Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
 
 <iframe
