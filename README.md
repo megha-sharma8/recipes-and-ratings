@@ -24,7 +24,7 @@ Our next step was creating new columns out of the given 'nutrition' column into 
 
 Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe, and created a new column called 'healthy' which was set to one if the recipes fit the criteria as defined, otherwise the 'healthy' column was set to 0.
 
-After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low. Because the context is uncertain, for example it would be nonsensical to impute 'tags' and 'description' using other values in the dataset, and similarly with other values such as the different type of nutrients, we once again decided to not impute NaN values. Imputing values when there are so few could actually skew the accuracy on the test data in our prediction model.
+After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low. Because the context is uncertain, for example it would be nonsensical to impute 'tags' and 'description' using other values in the dataset, and similarly with other values such as the different type of nutrients, we once again decided to not impute most NaN values. However, we did impute the 'ratings' that were 0, as it is not within the scale of a rating, and represents missing data. By imputing it as NaN, we differentiated between valid ratings and missing data allowing us to maintain consistency.
 
 This DataFrame yields 6177 healthy recipes!
 
@@ -95,5 +95,7 @@ With calories being continuous variable, and the response variable (as we are ai
 The metric we chose to evaluate our model was MSE (Mean Squared Error). We chose MSE because it penalizes errors and aims to minimize large errors in our predictions. Specifically, it measures the average squared error between predictions and actual values of our response variable, calories.
 
 ## Baseline Model
+
+
 
 ## Final Model
