@@ -1,6 +1,6 @@
 # Recipes and Ratings
 
-by Megha Sharma (meghash@umich.edu) and Akanksha Rai (raiaka@umich.edu)
+Megha Sharma (meghash@umich.edu) and Akanksha Rai (raiaka@umich.edu)
 
 ## Introduction
 
