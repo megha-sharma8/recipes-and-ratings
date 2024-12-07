@@ -28,11 +28,6 @@ After cleaning our data, we merged the dataset, and created the final DataFrame 
 
 This DataFrame yields 6177 healthy recipes!
 
-## Analysis Models
-Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
-
-Out of mere curiosity, we first decided to look at the most popular ingredients in healthy recipes. Salt appeared to be most popular ingredient (to no one's surprise) as well as olive oil. Seeing this makes us determine that there may be a correlation between healthy recipes and certain ingredients. 
-
 | name                                             |     id |   minutes |   contributor_id | submitted   | tags                              | nutrition                                |   n_steps | steps                             | description                                           | ingredients                                                                                                                                                                                                              |   n_ingredients | min_bins   |   calories |   total fat (PDV%) |   sugar (PDV%) |   sodium (PDV%) |   protein (PDV%) |   saturated fat (PDV%) |   carbohydrates (PDV%) |   healthy |   average_rating |
 |:-------------------------------------------------|-------:|----------:|-----------------:|:------------|:----------------------------------|:-----------------------------------------|----------:|:----------------------------------|:------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------:|:-----------|-----------:|-------------------:|---------------:|----------------:|-----------------:|-----------------------:|-----------------------:|----------:|-----------------:|
 | creamy   vegan potato leek soup                  | 343338 |        40 |           451456 | 2008-12-13  | ['lactose', '60-minutes-or-les... | [183.0, 3.0, 10.0, 0.0, 13.0, 1.0, 11.0] |        10 | ['heat olive oil in a 4-quart ... | adapted from alex jamieson's great american detox ... | ['olive oil', 'leeks', 'garlic cloves', 'russet potatoes', 'vegetable broth', 'white beans', 'fresh rosemary', 'salt and pepper']                                                                                        |               8 | (30, 60]   |      183   |                  3 |             10 |               0 |               13 |                      1 |                     11 |         1 |              4.5 |
@@ -41,12 +36,21 @@ Out of mere curiosity, we first decided to look at the most popular ingredients 
 | skordy  new potatoes w rosemary lemon   olive oi | 296983 |        35 |           718054 | 2008-04-08  | ['60-minutes-or-less', 'time-t... | [209.7, 10.0, 7.0, 0.0, 8.0, 4.0, 11.0]  |        14 | ['preheat oven to gas mark 8',... | i took this recipe from a vegan tastes of greece f... | ['new potatoes', 'lemon, juice of', 'lemon, zest of', 'rosemary', 'olive oil', 'garlic cloves']                                                                                                                          |               6 | (30, 60]   |      209.7 |                 10 |              7 |               0 |                8 |                      4 |                     11 |         1 |              5   |
 | creamy  mushroom soup                            | 331715 |        35 |           446143 | 2008-10-20  | ['60-minutes-or-less', 'time-t... | [99.3, 1.0, 8.0, 1.0, 12.0, 0.0, 6.0]    |        13 | ['chop mushrooms finely', 'spr... | creamless but creamy, and easily adapted to vegan.... | ['baby portabella mushrooms', 'onion', 'white beans', 'mushroom broth', 'reduced fat margarine', 'white pepper', 'salt', 'bay leaf', 'garlic cloves', 'dried thyme']                                                     |              10 | (30, 60]   |       99.3 |                  1 |              8 |               1 |               12 |                      0 |                      6 |         1 |              5   |
 
+## Analysis Models
+How does the relationship between ingredients and healthy recipes vary based on preparation time?
+
+Through our exploratory analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
+
+Out of mere curiosity, we first decided to look at the most popular ingredients in healthy recipes. We thought that seeing this may help us determine if there may be a correlation between healthy recipes and certain ingredients.
+
 <iframe
     src="assets/top_20_common.html"
     width="800"
     height="600"
     frameborder="0"
 ></iframe>
+
+For healthy recipes, sugar tends to be a less popular ingredient, with only approximately ~13% of healthy recipes using it as an ingredient, going to show that healthy recipes do not avoid sugar entirely, but that it does align with the common perception of healthiness (specifically that sugar is not a healthy ingredient).
 
 ## Framing a Prediction Problem
 
