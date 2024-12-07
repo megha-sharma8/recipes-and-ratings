@@ -8,13 +8,15 @@ Our analysis uses two connected datasets: interactions and recipes which, togeth
 
 ### Key Question
 
-**How do recipe characteristics, like preparation time and ingredient composition, relate to the healthiness of a recipe, and can we predict the number of calories in a recipe using these attributes?**
+**How do recipe characteristics, like preparation time and ingredient composition relate to the healthiness of a recipe, and can we predict the number of calories in a recipe using these attributes?**
 
 ### Why Should You Care?
 
 Food has a crucial role in navigating your health and the choices we make can lead to a healthy lifestyle if done so informatively. Understanding relationships between recipe characteristics and their true healthiness can help people determine what healthier cooking habits are, reducing the risk of disease (for example, diabetes). Knowing how ingredient composition of healthy recipes impact caloric content can be especially helpful for those who want to maximize the nutritional value of the calories they eat daily. Our insights are data-driven so that you can use them to make informed decisions on cooking habits and promote your well-being.
 
-### Cleaning the Data
+## Data Cleaning and Exploratory Data Analysis
+
+The first step in our analyzation process was cleaning and interpreting the data. 
 
 Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
 
@@ -24,3 +26,9 @@ Through our analysis we looked at the relationship between ingredients and healt
     height="600"
     frameborder="0"
 ></iframe>
+
+## Framing a Prediction Problem
+
+## Baseline Model
+
+## Final Model
