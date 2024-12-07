@@ -75,7 +75,9 @@ Referencing the *Nutritional Content by Cooking Time Bin for Healthy Recipes* gr
 
 ## Framing a Prediction Problem
 
-So far, we can see that there is a correlation between ingredients and recipes based on recipe preparation time. The higher the number of ingredients, the higher the number of calories.
+So far, we can see that there is a correlation between ingredients and recipes based on recipe preparation time. The higher the number of ingredients, the higher the number of calories. This leads us to our prediction question... *can we predict the number of calories for healthy recipes?*
+
+With calories being continuous variable, and the response variable (as we are aiming to predict calories), we know that we have a regression problem. Predicting the number of calories in a recipe requires the use of numerical features, such as the number of ingredients ('n_ingredients'), and nutrients (the PDV percentages, in particular) because we are producing a continuous output. 
 
 ## Baseline Model
 
