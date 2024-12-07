@@ -96,6 +96,10 @@ The metric we chose to evaluate our model was MSE (Mean Squared Error). We chose
 
 ## Baseline Model
 
+For our baseline model, we used features from our **healthy_recipes** DataFrame: total fat (PDV%), sugar (PDV%), protein (PDV%), sodium (PDV%), and min_bins to predict *y*, our response variable ('calories'). The 4 nutrients were all quantitative values, whereas min_bins was the only categorical variable, specficially ordinal. We split the data into training and testing sets, using approximately 80% of the data for training and 20% of the data for testing as a starting point. We standardized all the numerical features to allow for a mean of 0 and a standard deviation of 1 to make the features comparable. Because min_bins is categorical, we one-hot encoded it, dropping the first column to avoid multicollinearity. Using a pipeline, we passed in these two processing steps to a linear regression model.
 
+To evaluate the performance based on subsets of the data, we used cross validation to see how well the model generalizes to unseen data while reducing the chance of overfitting.
+
+We wanted to evaluate this model using MSE -- which yielded a score of 3632.74. This score was extremely high, indicating that there was a large deviation froom the actual values. We believe this is not good for our current believe.
 
 ## Final Model
