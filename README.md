@@ -79,6 +79,8 @@ So far, we can see that there is a correlation between ingredients and recipes b
 
 With calories being continuous variable, and the response variable (as we are aiming to predict calories), we know that we have a regression problem. Predicting the number of calories in a recipe requires the use of numerical features, such as the number of ingredients ('n_ingredients'), and nutrients (the PDV percentages, in particular) because we are producing a continuous output. 
 
+The metric we chose to evaluate our model was MSE (Mean Squared Error). We chose MSE because it penalizes errors and aims to minimize large errors in our predictions. Specifically, it measures the average squared error between predictions and actual values of our response variable, calories.
+
 ## Baseline Model
 
 ## Final Model
