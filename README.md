@@ -52,6 +52,16 @@ Out of mere curiosity, we first decided to look at the most popular ingredients 
 
 For healthy recipes, sugar tends to be a less popular ingredient, with only approximately ~13% of healthy recipes using it as an ingredient, going to show that healthy recipes do not avoid sugar entirely, but that it does align with the common perception of healthiness (specifically that sugar is not a healthy ingredient).
 
+
+We also were curious about the nutritional content 
+
+<iframe
+    src="assets/nutritional-content-cooking-time.html"
+    width="800"
+    height="600"
+    frameborder="0"
+></iframe>
+
 ## Framing a Prediction Problem
 
 ## Baseline Model
