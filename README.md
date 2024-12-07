@@ -20,15 +20,15 @@ The first step in our analyzation process was cleaning and interpreting the data
 
 Our next step included us binning minutes in the recipes dataset. On average, recipes take under 30 minutes to cook. However, we accounted for the fact that some recipes take longer to prepare than others. For example, in many bread recipes, it is important to prepare ingredients overnight. We set our limit to 1440 minutes, or 1 day, in preparation time. We chose to bin values a bit arbitrarily, using real-world scenarios. Our first bin was recipes that take up to 30 minutes in preparation time, as we deemed this to be the most common preparation time in our day-to-day lives and a quick recipe. The second bin was for 30-60 minutes, for moderately longer recipes. The bin edges grow as the number of minutes increases, as the amount of recipes with longer preparation times start to diminish. It accounts for a natural "slowdown" in extreme values, as recipes that take longer are not as common as recipes that require a shorter preparation time. We then removed recipes that did not fit into any of these bins, including recipes that took 0 minutes or recipes that took longer than 24 hours.
 
-Our next step was creating new columns out of the given 'nutrition' column into the percent daily values (PDV %) of different nutrients, including calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates.
+Our next step was creating new columns out of the given 'nutrition' column into the percent daily values (PDV %) of different nutrients, including calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates. We created a list of all the different nutrients, from calories to carbohydrates. Because 'nutrition' was of object type initially, we split the percentages on all commas, then used the values in the list as a key to set all the values. Finally, we changed the type for each new column to a float.
 
 Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe, and created a new column called 'healthy' which was set to one if the recipes fit the criteria as defined, otherwise the 'healthy' column was set to 0.
 
 After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low, once again being insignificant to clean. This DataFrame yields 6177 healthy recipes.
 
-## Models
+## Analysis Models
 
-Out of mere curiosity, we first decided to look at the most popular ingredients in healthy recipes. Salt appeared to be 
+Out of mere curiosity, we first decided to look at the most popular ingredients in healthy recipes. Salt appeared to be most popular ingredient (to no one's surprise) as well as olive oil. Seeing this makes us determine that there may be a correlation between healthy recipes and 
 Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
 
 <iframe
