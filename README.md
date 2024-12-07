@@ -24,7 +24,9 @@ Our next step was creating new columns out of the given 'nutrition' column into 
 
 Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe, and created a new column called 'healthy' which was set to one if the recipes fit the criteria as defined, otherwise the 'healthy' column was set to 0.
 
-After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low, once again being insignificant to clean. This DataFrame yields 6177 healthy recipes.
+After cleaning our data, we merged the dataset, and created the final DataFrame for our analysis. Our total number of NaN values remained low. Because the context is uncertain, for example it would be nonsensical to impute 'tags' and 'description' using other values in the dataset, and similarly with other values such as the different type of nutrients, we once again decided to not impute NaN values. Imputing values when there are so few could actually skew the accuracy on the test data in our prediction model.
+
+This DataFrame yields 6177 healthy recipes!
 
 ## Analysis Models
 Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
