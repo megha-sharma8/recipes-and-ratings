@@ -16,7 +16,13 @@ Food has a crucial role in navigating your health and the choices we make can le
 
 ## Data Cleaning and Exploratory Data Analysis
 
-The first step in our analyzation process was cleaning and interpreting the data. 
+The first step in our analyzation process was cleaning and interpreting the data. First, we took a a look at column types to determine if any conversions were necessary. Most columns were consistent with their type -  columns such as id, minutes, contributor id, n_steps, n_ingredients - were all of integer data type in recipes, and in interactions, user is, recipe id, and the rating were also. 
+
+Our next step included us binning minutes in the recipes dataset. On average, recipes take under 30 minutes to cook. However, we accounted for the fact that some recipes take longer to prepare than others. For example, in many bread recipes, it is important to prepare ingredients overnight. We set our limit to 1440 minutes, or 1 day, in preparation time. We chose to bin values a bit arbitrarily, using real-world scenarios. Our first bin was recipes that take up to 30 minutes in preparation time, as we deemed this to be the most common preparation time in our day-to-day lives and a quick recipe. The second bin was for 30-60 minutes, for moderately longer recipes. The bin edges grow as the number of minutes increases, as the amount of recipes with longer preparation times start to diminish. It accounts for a natural "slowdown" in extreme values, as recipes that take longer are not as common as recipes that require a shorter preparation time. We then removed recipes that did not fit into any of these bins, including recipes that took 0 minutes or recipes that took longer than 24 hours.
+
+Our next step was creating new columns out of the given 'nutrition' column into the percent daily values (PDV %) of different nutrients, including calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates.
+
+Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe.
 
 Through our analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
 
