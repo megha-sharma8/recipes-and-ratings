@@ -4,7 +4,7 @@ Megha Sharma (meghash@umich.edu) and Akanksha Rai (raiaka@umich.edu)
 
 ## Introduction
 
-Our analysis uses two connected datasets: interactions and recipes which, together, provide insights into user engagement with recipes. The interactions dataset captures feedback on recipes including through ratings and reviews by people with a timestamp (date column) to mark when the interaction occured. Each row demonstrates the interaction between a user and a recipe. The recipes dataset includes information on the recipes themselves, including the name, preparation time in minutes, nutrional content, steps, ingredients, and even tags. To explore these datasets further, we merged them on recipe id, creating 83,193 rows of what we deemed observable data capturing user engagement and characteristics of recipes.
+Our analysis uses two merged datasets: interactions and recipes which, together, provide insights into user engagement with recipes. The interactions dataset captures feedback on recipes including through ratings and reviews by people with a timestamp (date column) to mark when the interaction occured. Each row demonstrates the interaction between a user and a recipe. The recipes dataset includes information on the recipes themselves, including the name, preparation time in minutes, nutrional content, steps, ingredients, and even tags. To explore these datasets further, we merged them on recipe id, creating 83,193 rows of what we deemed observable data capturing user engagement and characteristics of recipes.
 
 ### Key Question
 
@@ -16,11 +16,11 @@ Food has a crucial role in navigating your health and the choices we make can le
 
 ## Data Cleaning and Exploratory Data Analysis
 
-The first step in our analyzation process was cleaning and interpreting the data. First, we took a a look at column types to determine if any conversions were necessary. Most columns were consistent with their type - columns such as id, minutes, contributor id, n_steps, n_ingredients - were all of integer data type in recipes, and in interactions, user is, recipe id, and the rating were also. In our second step, we took a look at the number of NaN values in each dataset. Because the number of NaN values for the entire dataset and the mean of NaN values was low for each column, we deemed this as unimportant to attend to.
+The first step in our analyzation process was cleaning and interpreting the data. First, we took a look at column types to determine if any conversions were necessary. Most columns were consistent with their type - columns such as id, minutes, contributor id, n_steps, n_ingredients - were all of integer data type in recipes, and in interactions, user is, recipe id, and the rating were also. In our second step, we took a look at the number of NaN values in each dataset. Because the number of NaN values for the entire dataset and the mean of NaN values was low for each column, we deemed this as unimportant to attend to.
 
 Our next step included us binning minutes in the recipes dataset. On average, recipes take under 30 minutes to cook. However, we accounted for the fact that some recipes take longer to prepare than others. For example, in many bread recipes, it is important to prepare ingredients overnight. We set our limit to 1440 minutes, or 1 day, in preparation time. We chose to bin values a bit arbitrarily, using real-world scenarios. Our first bin was recipes that take up to 30 minutes in preparation time, as we deemed this to be the most common preparation time in our day-to-day lives and a quick recipe. The second bin was for 30-60 minutes, for moderately longer recipes. The bin edges grow as the number of minutes increases, as the amount of recipes with longer preparation times start to diminish. It accounts for a natural "slowdown" in extreme values, as recipes that take longer are not as common as recipes that require a shorter preparation time. We then removed recipes that did not fit into any of these bins, including recipes that took 0 minutes or recipes that took longer than 24 hours.
 
-Our next step was creating new columns out of the given 'nutrition' column into the percent daily values (PDV %) of different nutrients, including calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates. We created a list of all the different nutrients, from calories to carbohydrates. Because 'nutrition' was of object type initially, we split the percentages on all commas, then used the values in the list as a key to set all the values. Finally, we changed the type for each new column to a float.
+After this we started creating new columns out of the given 'nutrition' column into the percent daily values (PDV %) of different nutrients, including calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates. We created a list of all the different nutrients, from calories to carbohydrates. Because 'nutrition' was of object type initially, we split the percentages on all commas, then used the values in the list as a key to set all the values. Finally, we changed the type for each new column to a float.
 
 Through research, we determined the PDV percentages for each nutrient that was necessary to be considered a healthy recipe, and created a new column called 'healthy' which was set to one if the recipes fit the criteria as defined, otherwise the 'healthy' column was set to 0.
 
@@ -106,4 +106,22 @@ We wanted to evaluate this model using MSE -- which yielded a score of 3632.74. 
 
 ## Final Model
 
-Testing akanksha
+### **Model Overview**
+Our final model aims to provide a more accurate prediction of the calorie content in healthy recipes by incorporating additional features and utilizing a **Ridge Regression** algorithm. We have also explored **Linear Regression** as an alternative, testing the performance of both models to determine which offers the best predictive accuracy.
+
+### **Features Added**
+To enhance the model's ability to capture the complexities of healthy recipes and their nutritional content, we added the following features:
+
+1. **Complexity Score**:
+   - **Formula**: `complexity_score = n_ingredients * n_steps`
+   - **Reason**: This feature combines the number of ingredients and the number of preparation steps to quantify the complexity of the recipe. Recipes with more ingredients and steps likely require more time and effort to prepare, which could influence the calorie content due to factors like cooking method or the number of calorie-dense ingredients used. This additional feature provides insight into how the complexity of the recipe might impact its overall calorie count.
+
+2. **Nutrient Density**:
+   - **Formula**: `nutrient_density = (protein (PDV%) + total fat (PDV%)) / (sugar (PDV%) + 1)`
+   - **Reason**: Nutrient density is a measure of the balance between essential nutrients (protein and fat) and sugar, a potentially harmful nutrient in excess. A higher nutrient density might indicate a recipe that is more balanced in terms of essential nutrients relative to sugar content, potentially leading to more accurate predictions of calorie content. The addition of a `+1` to the denominator avoids division by zero errors for recipes with zero sugar.
+
+3. **Sodium to Fat Ratio**:
+   - **Formula**: `sodium_to_fat_ratio = sodium (PDV%) / (total fat (PDV%) + 1)`
+   - **Reason**: This ratio measures the balance between sodium and fat, which could provide more information about the recipe’s overall healthiness and caloric content. Too much sodium relative to fat or vice versa could indicate specific types of recipes (e.g., salty or fatty foods) that might affect calorie predictions.
+
+These features were selected based on their potential to provide additional context about the recipe's nutritional content. By including complexity, nutrient balance, and sodium-to-fat ratio, the model is better equipped to make predictions that consider not just basic nutritional values but also broader aspects of the recipe's structure.
