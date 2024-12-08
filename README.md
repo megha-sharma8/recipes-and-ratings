@@ -39,7 +39,7 @@ This DataFrame yields 6177 healthy recipes!
 
 
 ## Analysis Models
-How does the relationship between ingredients and healthy recipes vary based on preparation time?
+*How does the relationship between ingredients and healthy recipes vary based on preparation time?*
 
 Through our exploratory analysis we looked at the relationship between ingredients and healthy recipes based on preparation time. 
 
