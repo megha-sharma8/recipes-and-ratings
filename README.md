@@ -4,7 +4,7 @@ Megha Sharma (meghash@umich.edu) and Akanksha Rai (raiaka@umich.edu)
 
 ## Introduction
 
-Our analysis uses two interesting datasets: interactions and recipes which, together, provide insights into user engagement with recipes. The interactions dataset captures feedback on recipes including through ratings and reviews by people with a timestamp (date column) to mark when the interaction occured. Each row demonstrates the interaction between a user and a recipe. The recipes dataset includes information on the recipes themselves, including the name, preparation time in minutes, nutrional content, steps, ingredients, and even tags. To explore these datasets further, we merged them on recipe id, creating 83,193 rows of what we deemed observable data capturing user engagement and characteristics of recipes.
+Our analysis uses two interesting datasets: interactions and recipes which, together, provide insights into user engagement with recipes. The interactions dataset captures feedback on recipes including through ratings and reviews by people with a timestamp (date column) to mark when the interaction occured. Each row demonstrates the interaction between a user and a recipe, with a unique user id and unique recipe id. The recipes dataset includes information on the recipes themselves, including the name, preparation time in minutes, nutrional content (as PDV percentages), steps, ingredients, and even tags that are used to categorize recipes. To explore these datasets further, we merged them on recipe_id, creating 83,193 rows of what we deemed observable data capturing user engagement and characteristics of recipes.
 
 ### Key Question
 
