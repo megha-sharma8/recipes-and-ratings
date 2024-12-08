@@ -1,4 +1,4 @@
-# Recipes and Ratings
+# Predict Your Calories
 
 Megha Sharma (meghash@umich.edu) and Akanksha Rai (raiaka@umich.edu)
 
