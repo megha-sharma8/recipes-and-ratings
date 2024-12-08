@@ -106,7 +106,6 @@ We wanted to evaluate this model using MSE -- which yielded a score of 3632.74. 
 
 ## Final Model
 
-### **Model Overview**
 Our final model aims to provide a more accurate prediction of the calorie content in healthy recipes by incorporating additional features and utilizing a **Ridge Regression** algorithm. We have also explored **Linear Regression** as an alternative, testing the performance of both models to determine which offers the best predictive accuracy.
 
 ### **Features Added**
@@ -125,3 +124,31 @@ To enhance the model's ability to capture the complexities of healthy recipes an
    - **Reason**: This ratio measures the balance between sodium and fat, which could provide more information about the recipe’s overall healthiness and caloric content. Too much sodium relative to fat or vice versa could indicate specific types of recipes (e.g., salty or fatty foods) that might affect calorie predictions.
 
 These features were selected based on their potential to provide additional context about the recipe's nutritional content. By including complexity, nutrient balance, and sodium-to-fat ratio, the model is better equipped to make predictions that consider not just basic nutritional values but also broader aspects of the recipe's structure.
+
+
+### **Modeling Algorithm**
+The final model is built using **Ridge Regression**, a regularized version of linear regression. Ridge regression applies an L2 penalty to the model coefficients, preventing overfitting when dealing with high-dimensional data or many features, like those in this dataset. Ridge is particularly effective here since we are adding multiple features that could potentially increase model complexity.
+
+We also evaluated **Linear Regression** as a baseline model, which does not involve regularization and allows us to compare performance improvements stemming from the addition of regularization.
+
+#### **Hyperparameters and Selection**
+To find the optimal level of regularization, we used **GridSearchCV**, which systematically searches through a grid of hyperparameters to identify the best ones based on cross-validation performance. For both Ridge and Linear Regression, we tuned the regularization parameter `alpha`.
+
+- **Best Hyperparameter for Ridge**: The best value of `alpha` determined through grid search was **10**, which provided the best balance of model complexity and accuracy.
+- **Best Hyperparameter for Linear Regression**: Since Linear Regression does not involve regularization, no hyperparameter tuning was performed for it.
+
+### **Final Model Performance**
+The performance of the **Ridge Regression** model was evaluated on the test set using ** Mean Squared Error (MSE)**, which assesses the model's  ability to explain the variance in the data.
+
+- **Test Set MSE for Ridge**: The final MSE on the test set was **2954.30**, which represents a notable improvement over the baseline model's MSE of **3631.74**.
+
+### **Linear Regression Performance**
+The performance of the **Linear Regression** model was also evaluated for comparison:
+
+- **Test Set MSE for Linear Regression**: The final RMSE for Linear Regression was **2954.78**, which is nearly identical to the Ridge model’s MSE, showing that while the performance is similar, Ridge Regression benefits from regularization.
+
+
+### **Conclusion**
+The **Ridge Regression** model is the final chosen model due to its better regularization and performance, outperforming both the **Linear Regression** baseline and the **Baseline Model** in terms of MSE. The addition of features like complexity score, nutrient density, and sodium-to-fat ratio has allowed the model to better understand the relationships between recipe characteristics and calorie content, resulting in a model that can make more accurate predictions. 
+
+The improvements in model performance—RMSE dropping from **60.26** in the baseline to **54.35** in the final model—demonstrate the value of the additional features and the regularization provided by Ridge Regression. Future work could explore more advanced models, such as non-linear regression, to further refine predictions.
