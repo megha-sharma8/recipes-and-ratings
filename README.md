@@ -117,33 +117,34 @@ We wanted to evaluate this model using MSE -- which yielded a score of 3632.74. 
 
 ## Final Model
 
-Our final model aims to provide a more accurate prediction of the calorie content in healthy recipes by incorporating additional features and utilizing a **Ridge Regression** algorithm. We have also explored **Linear Regression** as an alternative, testing the performance of both models to determine which offers the best predictive accuracy.
+Our final model is more accurate in its prediction of the calorie content in healthy recipes through adding  additional features and using a Ridge Regression algorithm. As an alternative, Linear Regression was also explored in testing both models to ascertain which gives the best prediction accuracy.
 
 ### **Features Added**
-To enhance the model's ability to capture the complexities of healthy recipes and their nutritional content, we added the following features:
+We made this model more representative of healthy recipes and their nutritional content by including the following features:
 
 1. **Complexity Score**:
    - **Formula**: `complexity_score = n_ingredients * n_steps`
-   - **Reason**: This feature combines the number of ingredients and the number of preparation steps to quantify the complexity of the recipe. Recipes with more ingredients and steps likely require more time and effort to prepare, which could influence the calorie content due to factors like cooking method or the number of calorie-dense ingredients used. This additional feature provides insight into how the complexity of the recipe might impact its overall calorie count.
+   - **Reason**: This feature combines the number of ingredients and the number of preparation steps to quantify the complexity of the recipe. Recipes with more ingredients and steps are likely to take longer and be more exhaustive in their preparation and thus may affect the calorie count based on factors such as cooking method or amount of calorie-rich ingredients used. This added feature gives insight into how the overall calorie count of the recipe might be influenced by the complexity of the recipe.
 
 2. **Nutrient Density**:
    - **Formula**: `nutrient_density = (protein (PDV%) + total fat (PDV%)) / (sugar (PDV%) + 1)`
-   - **Reason**: Nutrient density is a measure of the balance between essential nutrients (protein and fat) and sugar, a potentially harmful nutrient in excess. A higher nutrient density might indicate a recipe that is more balanced in terms of essential nutrients relative to sugar content, potentially leading to more accurate predictions of calorie content. The addition of a `+1` to the denominator avoids division by zero errors for recipes with zero sugar.
+   - **Reason**:  Nutrient density represents the balance between the essential nutrients, such as protein and fat, and sugar, an excessively consumed nutrient. It is expected that the nutrient density being higher means a more balanced recipe concerning the essential nutrients with respect to sugar and thus may have a better predictability of calorie content. Adding a +1 to the denominator avoids any division by zero errors in the case of recipes that report zero sugar.
 
 3. **Sodium to Fat Ratio**:
    - **Formula**: `sodium_to_fat_ratio = sodium (PDV%) / (total fat (PDV%) + 1)`
-   - **Reason**: This ratio measures the balance between sodium and fat, which could provide more information about the recipe’s overall healthiness and caloric content. Too much sodium relative to fat or vice versa could indicate specific types of recipes (e.g., salty or fatty foods) that might affect calorie predictions.
+   - **Reason**: This is the balance of sodium to fat, which could provide more information about the recipe’s overall healthiness and caloric content. Too much sodium relative to fat or vice versa could indicate specific types of recipes (e.g., salty or fatty foods) that might affect calorie predictions.
 
-By including complexity, nutrient balance, and sodium-to-fat ratio, the model is better equipped to make predictions that consider not just basic nutritional values but also broader aspects of the recipe's structure.
+By including complexity, nutrient balance, and sodium-to-fat ratio, the model can make predictions that take into account not just basic nutritional values but also broader aspects of the recipe structure.
 
 
 ### **Modeling Algorithm**
 The final model is built using **Ridge Regression**.  Ridge regression applies an L2 penalty to the model coefficients, preventing overfitting when dealing with high-dimensional data or many features, like those in this dataset. Ridge is particularly effective here since we are adding multiple features that could potentially increase model complexity.
 
-We also evaluated **Linear Regression** as a baseline model, which does not involve regularization and allows us to compare performance improvements stemming from the addition of regularization.
+We also consider Linear Regression as a baseline model without regularization to compare the improvement in performance brought by the addition of regularization.
+
 
 #### **Hyperparameters and Selection**
-To find the optimal level of regularization, we used **GridSearchCV**, which systematically searches through a grid of hyperparameters to identify the best ones based on cross-validation performance. 
+We used **GridSearchCV** to find the optimal level of regularization.
 
 - **Best Hyperparameter for Ridge**: The best value of `alpha` determined through grid search was **10**, which provided the best balance of model complexity and accuracy.
 
@@ -155,10 +156,10 @@ The performance of the **Ridge Regression** model was evaluated on the same test
 ### **Linear Regression Performance**
 The performance of the **Linear Regression** model was also evaluated for comparison:
 
-- **Test Set MSE for Linear Regression**: The final MSE for Linear Regression was **2954.78**, which is nearly identical to the Ridge model’s MSE, showing that while the performance is similar, Ridge Regression benefits from regularization.
+- **Test Set MSE for Linear Regression**: The final MSE for the Linear Regression is **2954.78**, very close to the MSE in the Ridge model; showing that while the performance is similar, Ridge Regression benefits from regularization.
 
 
 ### **Conclusion**
-The **Ridge Regression** model is the final chosen model due to its better regularization and performance, outperforming both the **Linear Regression** baseline and the **Baseline Model** in terms of MSE. The addition of features like complexity score, nutrient density, and sodium-to-fat ratio has allowed the model to better understand the relationships between recipe characteristics and calorie content, resulting in a model that can make more accurate predictions. 
+The **Ridge Regression** model is the final chosen model due to its better regularization and performance, outperforming both the **Linear Regression** baseline and the **Baseline Model** in terms of MSE. By including features like complexity score, nutrient density, and sodium-to-fat ratio has allowed the model to better understand the relationships between recipe characteristics and calorie content, resulting in a model that can make more accurate predictions. 
 
  Future work could explore more advanced models, such as non-linear regression, to further refine predictions.
